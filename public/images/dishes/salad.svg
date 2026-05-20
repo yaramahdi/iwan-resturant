@@ -1,0 +1,78 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bowlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6b4423;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3d2817;stop-opacity:1" />
+    </linearGradient>
+    <filter id="saladGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="300" fill="#1a1a1a"/>
+  
+  <!-- Shadow -->
+  <ellipse cx="150" cy="260" rx="90" ry="20" fill="rgba(0,0,0,0.3)"/>
+  
+  <!-- Bowl -->
+  <path d="M 80 160 Q 80 220 150 230 Q 220 220 220 160" fill="url(#bowlGrad)" stroke="#4d2817" stroke-width="2" filter="url(#saladGlow)"/>
+  <ellipse cx="150" cy="158" rx="72" ry="25" fill="#7a5430" opacity="0.6"/>
+  
+  <!-- Lettuce leaves background -->
+  <g fill="#2d5016" opacity="0.7">
+    <path d="M 100 170 Q 95 185 105 195 Q 110 190 108 175 Z"/>
+    <path d="M 200 170 Q 205 185 195 195 Q 190 190 192 175 Z"/>
+    <path d="M 130 175 Q 125 195 135 205 Q 140 195 138 180 Z"/>
+    <path d="M 170 175 Q 175 195 165 205 Q 160 195 162 180 Z"/>
+  </g>
+  
+  <!-- Main lettuce leaves (various shades of green) -->
+  <g>
+    <!-- Leaf 1 -->
+    <ellipse cx="110" cy="180" rx="25" ry="35" fill="#22aa22" transform="rotate(-30 110 180)" opacity="0.8"/>
+    <path d="M 95 165 Q 110 175 120 190" stroke="#118811" stroke-width="1" fill="none"/>
+    
+    <!-- Leaf 2 -->
+    <ellipse cx="190" cy="180" rx="25" ry="35" fill="#2db82d" transform="rotate(40 190 180)" opacity="0.85"/>
+    <path d="M 205 165 Q 190 175 180 190" stroke="#118811" stroke-width="1" fill="none"/>
+    
+    <!-- Leaf 3 -->
+    <ellipse cx="150" cy="165" rx="30" ry="38" fill="#3dd83d" transform="rotate(0 150 165)" opacity="0.9"/>
+    <path d="M 130 150 Q 150 160 170 150" stroke="#0d7d0d" stroke-width="1.5" fill="none"/>
+    
+    <!-- Leaf 4 -->
+    <ellipse cx="140" cy="195" rx="22" ry="32" fill="#22aa22" transform="rotate(-15 140 195)" opacity="0.8"/>
+    <path d="M 130 185 Q 140 195 148 205" stroke="#118811" stroke-width="1" fill="none"/>
+    
+    <!-- Leaf 5 -->
+    <ellipse cx="160" cy="195" rx="22" ry="32" fill="#2db82d" transform="rotate(20 160 195)" opacity="0.8"/>
+    <path d="M 170 185 Q 160 195 152 205" stroke="#118811" stroke-width="1" fill="none"/>
+  </g>
+  
+  <!-- Tomato slices -->
+  <g opacity="0.7">
+    <circle cx="125" cy="190" r="12" fill="#e63946"/>
+    <line x1="125" y1="180" x2="125" y2="200" stroke="#8b0000" stroke-width="0.5"/>
+    <line x1="115" y1="190" x2="135" y2="190" stroke="#8b0000" stroke-width="0.5"/>
+    
+    <circle cx="175" cy="185" r="11" fill="#c41e2e"/>
+    <line x1="175" y1="176" x2="175" y2="194" stroke="#8b0000" stroke-width="0.5"/>
+    <line x1="166" y1="185" x2="184" y2="185" stroke="#8b0000" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Cucumber slices -->
+  <g opacity="0.75">
+    <ellipse cx="150" cy="200" rx="14" ry="10" fill="#22aa22"/>
+    <circle cx="150" cy="200" r="8" fill="none" stroke="#118811" stroke-width="1" opacity="0.6"/>
+    <circle cx="145" cy="198" r="2" fill="#118811" opacity="0.4"/>
+    <circle cx="155" cy="202" r="2" fill="#118811" opacity="0.4"/>
+  </g>
+  
+  <!-- Highlight on bowl -->
+  <ellipse cx="120" cy="165" rx="15" ry="10" fill="white" opacity="0.15"/>
+</svg>

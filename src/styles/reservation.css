@@ -1,0 +1,445 @@
+/* ── Section ── */
+.reservation {
+  background: var(--background-reservation);
+  position: relative;
+  padding: 100px 48px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.reservation::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, rgba(196, 30, 46, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* ── Content ── */
+.reservation-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ── Visual / SVG ── */
+.reservation-visual {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scrollReveal 0.7s ease backwards;
+}
+
+.table-svg {
+  width: 140px;
+  height: 140px;
+  fill: none;
+  stroke: rgba(196, 30, 46, 0.6);
+  filter: drop-shadow(0 0 32px rgba(196, 30, 46, 0.35));
+  animation: floatBob 4s ease-in-out infinite;
+}
+
+.pulse-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(196, 30, 46, 0.4);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ringPulse 2s ease-out infinite;
+}
+
+.pulse-ring:nth-child(1) { width: 160px; height: 160px; animation-delay: 0s; }
+.pulse-ring:nth-child(2) { width: 220px; height: 220px; animation-delay: 0.6s; }
+.pulse-ring:nth-child(3) { width: 280px; height: 280px; animation-delay: 1.2s; }
+
+/* ── Text block ── */
+.reservation-text {
+  animation: scrollReveal 0.7s ease 0.2s backwards;
+}
+
+.reservation-tag {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.reservation-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.reservation-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── CTA button ── */
+.reservation-cta {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 18px 52px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Cairo', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px rgba(196, 30, 46, 0.35);
+  animation: scrollReveal 0.7s ease 0.4s backwards;
+  cursor: pointer;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.reservation-cta:hover {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(196, 30, 46, 0.55);
+  border-color: rgba(201, 168, 76, 0.4);
+}
+
+.reservation-cta svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ══════════════════════════════
+   Modal Overlay
+══════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: overlayFade 0.3s ease;
+  backdrop-filter: blur(10px);
+  padding: 16px;
+}
+
+/* ══════════════════════════════
+   Modal Box
+══════════════════════════════ */
+.modal-box {
+  background: linear-gradient(160deg, #1e0e0a 0%, #140a08 60%, #0e0806 100%);
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  border-radius: 28px;
+  padding: 0;
+  max-width: 540px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  animation: modalScale 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(196, 30, 46, 0.12) inset;
+}
+
+/* Gold top bar */
+.modal-box::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--primary), var(--gold), transparent);
+  border-radius: 28px 28px 0 0;
+}
+
+/* ── Close button ── */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: rgba(196, 30, 46, 0.2);
+  border-color: rgba(196, 30, 46, 0.4);
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* ── Modal header ── */
+.modal-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  padding: 36px 36px 0;
+  margin-bottom: 6px;
+}
+
+.modal-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+
+.modal-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+  padding: 0 36px;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* ── Form wrapper ── */
+.modal-box form {
+  padding: 0 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Two-column row: Name + Phone ── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Form group ── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 20px;
+}
+
+/* ── Label ── */
+.form-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff !important;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-label::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+/* ── Inputs ── */
+.form-input,
+.form-textarea {
+  background: #1c0d09 !important;
+  border: 1.5px solid rgba(201, 168, 76, 0.2);
+  border-radius: 12px;
+  padding: 13px 16px;
+  color: white !important;
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #241008 !important;
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12), 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Autofill override */
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #1c0d09 inset !important;
+  -webkit-text-fill-color: white !important;
+  caret-color: white;
+}
+
+/* Time input */
+.form-input[type="time"] {
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ── Textarea ── */
+.form-textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+/* ── Divider before submit ── */
+.form-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.2), transparent);
+  margin: 8px 0 24px;
+}
+
+/* ── Submit button ── */
+.form-submit {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 15px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Cairo', sans-serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(196, 30, 46, 0.35);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-submit::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-submit:hover {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(196, 30, 46, 0.5);
+}
+
+.form-submit:hover::after {
+  opacity: 1;
+}
+
+.form-submit:active {
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════
+   Success State
+══════════════════════════════ */
+.success-message {
+  text-align: center;
+  padding-block: 56px;
+  padding-inline: 36px;
+  animation: modalScale 0.4s ease;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 38px;
+  color: white;
+  box-shadow: 0 8px 28px rgba(34, 197, 94, 0.35);
+}
+
+.success-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.success-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════
+   Responsive
+══════════════════════════════ */
+@media (max-width: 768px) {
+  .reservation {
+    padding: 60px 24px;
+  }
+
+  .modal-box form,
+  .modal-title,
+  .modal-subtitle,
+  .success-message {
+    padding-inline: 24px;
+  }
+
+  .modal-title {
+    padding-top: 28px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .reservation-cta {
+    padding: 14px 36px;
+    font-size: 14px;
+  }
+}

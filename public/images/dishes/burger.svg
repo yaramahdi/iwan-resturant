@@ -1,0 +1,74 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="burgerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b6914;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lettuceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22aa22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#118811;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cheeseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f4c430;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4a830;stop-opacity:1" />
+    </linearGradient>
+    <filter id="burgerGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="300" fill="#1a1a1a"/>
+  
+  <!-- Shadow -->
+  <ellipse cx="150" cy="260" rx="80" ry="15" fill="rgba(0,0,0,0.3)"/>
+  
+  <!-- Bottom bun -->
+  <ellipse cx="150" cy="200" rx="75" ry="35" fill="url(#burgerGrad)" filter="url(#burgerGlow)"/>
+  <ellipse cx="150" cy="198" rx="75" ry="33" fill="#d4a574"/>
+  <!-- Sesame seeds on bun -->
+  <g fill="#fff8dc" opacity="0.8">
+    <circle cx="125" cy="185" r="4"/>
+    <circle cx="140" cy="180" r="3"/>
+    <circle cx="160" cy="178" r="3"/>
+    <circle cx="175" cy="182" r="4"/>
+    <circle cx="130" cy="200" r="3"/>
+    <circle cx="170" cy="202" r="3"/>
+  </g>
+  
+  <!-- Lettuce -->
+  <ellipse cx="150" cy="165" rx="80" ry="18" fill="url(#lettuceGrad)"/>
+  <path d="M80 165 Q150 175 220 165" stroke="#118811" stroke-width="1" fill="none" opacity="0.6"/>
+  
+  <!-- Cheese slice -->
+  <rect x="80" y="150" width="140" height="20" fill="url(#cheeseGrad)" opacity="0.9"/>
+  <rect x="82" y="152" width="136" height="16" fill="#f4c430" opacity="0.7"/>
+  
+  <!-- Tomato -->
+  <circle cx="150" cy="125" r="40" fill="#c41e2e" opacity="0.9"/>
+  <ellipse cx="150" cy="125" rx="38" ry="35" fill="#e63946"/>
+  <g stroke="#8b0000" stroke-width="1" opacity="0.5">
+    <line x1="140" y1="100" x2="145" y2="110"/>
+    <line x1="150" y1="95" x2="150" y2="108"/>
+    <line x1="160" y1="100" x2="155" y2="110"/>
+    <line x1="135" y1="125" x2="148" y2="128"/>
+    <line x1="165" y1="125" x2="152" y2="128"/>
+  </g>
+  
+  <!-- Top bun -->
+  <ellipse cx="150" cy="90" rx="75" ry="35" fill="url(#burgerGrad)" filter="url(#burgerGlow)"/>
+  <ellipse cx="150" cy="92" rx="75" ry="33" fill="#d4a574"/>
+  <!-- Sesame seeds on top bun -->
+  <g fill="#fff8dc" opacity="0.8">
+    <circle cx="120" cy="80" r="4"/>
+    <circle cx="140" cy="75" r="3"/>
+    <circle cx="160" cy="73" r="3"/>
+    <circle cx="180" cy="78" r="4"/>
+    <circle cx="125" cy="95" r="3"/>
+    <circle cx="175" cy="97" r="3"/>
+  </g>
+</svg>

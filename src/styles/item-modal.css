@@ -1,0 +1,249 @@
+/* ── Backdrop ── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: backdropIn 0.22s ease;
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Card ── */
+.modal-card {
+  position: relative;
+  background: #181010;
+  border: 1px solid rgba(196, 30, 46, 0.2);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 380px;
+  overflow: hidden;
+  animation: cardIn 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: scale(0.88) translateY(20px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+/* ── Close button ── */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: rgba(196, 30, 46, 0.7);
+}
+
+/* ── Image ── */
+.modal-img {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.modal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Body ── */
+.modal-body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  direction: rtl;
+}
+
+.modal-name {
+  font-family: 'Cairo', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  text-align: right;
+}
+
+.modal-desc {
+  font-family: 'Cairo', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.6;
+  text-align: right;
+}
+
+.modal-price {
+  font-family: 'Cairo', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+  text-align: right;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* ── Quantity ── */
+.modal-qty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 8px 20px;
+  align-self: center;
+  min-width: 150px;
+}
+
+.modal-qty-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.modal-qty-btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+.modal-qty-num {
+  font-family: 'Cairo', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* ── Size / Option selector ── */
+.modal-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modal-option-btn {
+  flex: 1;
+  min-width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.modal-option-btn:hover {
+  border-color: rgba(196, 30, 46, 0.5);
+  background: rgba(196, 30, 46, 0.08);
+}
+
+.modal-option-btn.selected {
+  border-color: var(--primary);
+  background: rgba(196, 30, 46, 0.18);
+}
+
+.option-label {
+  font-family: 'Cairo', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.option-price {
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  direction: ltr;
+}
+
+/* ── Add button ── */
+.modal-add-btn {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+
+.modal-add-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.modal-add-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .modal-img {
+    height: 210px;
+  }
+
+  .modal-body {
+    padding: 16px 18px 20px;
+    gap: 10px;
+  }
+
+  .modal-name {
+    font-size: 18px;
+  }
+}
