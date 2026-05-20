@@ -308,6 +308,11 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Mobile strip (hidden on desktop) ── */
+.hero-mobile-strip {
+  display: none;
+}
+
 /* ── Mobile ── */
 @media (max-width: 900px) {
   .card--mid-right,
@@ -316,23 +321,54 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+  }
+
+  /* إخفاء كل الكروت على الجوال وعرض صف صور بالأسفل */
   .float-card {
-    width: 130px;
+    display: none;
   }
 
-  .float-card__img-wrap {
-    height: 100px;
+  .hero-content {
+    gap: 14px;
   }
 
-  .card--top-right  { top: 8%;    right: 4%; }
-  .card--bottom-right { bottom: 10%; right: 4%; }
-  .card--top-left   { top: 8%;    left: 4%; }
-  .card--bottom-left  { bottom: 10%; left: 4%; }
+  .hero-name {
+    font-size: clamp(64px, 18vw, 100px);
+  }
+
+  .hero-tagline {
+    font-size: 14px;
+  }
 
   .btn-primary,
   .btn-outline {
     padding: 13px 28px;
     font-size: 14px;
+  }
+
+  .hero-mobile-strip {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 6px;
+  }
+
+  .hero-strip-item {
+    width: 90px;
+    height: 80px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(196, 30, 46, 0.3);
+    flex-shrink: 0;
+  }
+
+  .hero-strip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 }
