@@ -50,13 +50,6 @@ const Hero = () => {
               احجز طاولتك
             </button>
           </div>
-          <div className="hero-mobile-strip">
-            {cards.map((card, i) => (
-              <div key={i} className="hero-strip-item">
-                <img src={card.img} alt={card.label} />
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
